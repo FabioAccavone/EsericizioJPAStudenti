@@ -1,6 +1,5 @@
 package accenture.com.dao;
 
-import accenture.com.entity.Esame;
 import accenture.com.entity.Studente;
 import jakarta.persistence.EntityManager;
 

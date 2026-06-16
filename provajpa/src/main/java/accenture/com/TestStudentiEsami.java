@@ -8,7 +8,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class TestStudentiEsami {
@@ -110,8 +109,6 @@ public class TestStudentiEsami {
                             Esame e = new Esame(materia, voto);
 
                             e.setStudente(s);
-                            // relazione bidirezionale corretta
-                            s.addEsame(e);
 
                             esameDAO.update(e);
 

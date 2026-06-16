@@ -24,18 +24,7 @@ public class Studente {
         this.nome = nome;
         this.cognome = cognome;
     }
-
-    // helper per relazione bidirezionale
-    public void addEsame(Esame esame) {
-        esami.add(esame);
-        esame.setStudente(this);
-    }
-
-    public void removeEsame(Esame esame) {
-        esami.remove(esame);
-        esame.setStudente(null);
-    }
-
+    
     // getter e setter
     public Long getMatricola() { return matricola; }
 
