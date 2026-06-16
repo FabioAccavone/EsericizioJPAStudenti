@@ -122,16 +122,28 @@ public class TestLibri {
                         System.out.print("ISBN: ");
                         String isbn = sc.nextLine();
 
-                        System.out.print("Autore (testo): ");
-                        String autoreStr = sc.nextLine();
+                        System.out.print("ID Autore: ");
+                        long idAutore = sc.nextLong();
+                        sc.nextLine();
 
-                        Libro l = new Libro();
-                        l.setTitolo(titolo);
-                        l.setAnnoPubblicazione(anno);
-                        l.setIsbn(isbn);
-                        l.setAutore(autoreStr);
+                        Autore a = autoreDao.findById(idAutore);
 
-                        libroDao.save(l);
+                        if (a != null) {
+
+                            Libro l = new Libro();
+                            l.setTitolo(titolo);
+                            l.setAnnoPubblicazione(anno);
+                            l.setIsbn(isbn);
+
+                            // 🔥 relazione corretta
+                            l.setAutore(a);
+
+                            libroDao.save(l);
+
+                            System.out.println("Libro creato correttamente.");
+                        } else {
+                            System.out.println("Autore non trovato.");
+                        }
                     }
 
                     case 7 -> libroDao.findAll().forEach(System.out::println);
@@ -174,11 +186,13 @@ public class TestLibri {
                     }
 
                     case 11 -> {
-                        System.out.print("Nome autore: ");
-                        String autore = sc.nextLine();
+                        System.out.print("Id Autore: ");
+                        long idAutore = sc.nextLong();
+                        sc.nextLine();
 
-                        libroDao.findByAutore(autore)
-                                .forEach(System.out::println);
+                        Autore a = autoreDao.findById(idAutore);
+
+                        System.out.println(a.getLibri());
                     }
                     case 0 -> System.out.println("Uscita...");
                     default -> System.out.println("Scelta non valida!");
