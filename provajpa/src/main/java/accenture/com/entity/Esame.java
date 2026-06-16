@@ -40,7 +40,7 @@ public class Esame {
 
     @Override
     public String toString() {
-        return  "id: " + id +
+        return  "\nid: " + id +
                 ", materia: '" + materia + '\'' +
                 ", voto: " + voto;
     }

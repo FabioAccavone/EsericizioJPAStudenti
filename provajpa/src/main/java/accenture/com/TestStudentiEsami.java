@@ -109,10 +109,11 @@ public class TestStudentiEsami {
 
                             Esame e = new Esame(materia, voto);
 
+                            e.setStudente(s);
                             // relazione bidirezionale corretta
                             s.addEsame(e);
 
-                            studenteDAO.update(s);
+                            esameDAO.update(e);
 
                             System.out.println("Esame aggiunto.");
                         } else {
@@ -131,14 +132,7 @@ public class TestStudentiEsami {
                         sc.nextLine();
 
                         Studente s = studenteDAO.findById(id);
-                        List<Esame> esami = studenteDAO.findEsamiByStudenteId(id);
-
-                        if (esami.isEmpty()) {
-                            System.out.println("Nessun esame trovato.");
-                        } else {
-                            System.out.println(s);
-                            esami.forEach(System.out::println);
-                        }
+                        System.out.println(s.getEsami());
                     }
 
                     case 8 -> {

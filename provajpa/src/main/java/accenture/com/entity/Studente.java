@@ -15,7 +15,7 @@ public class Studente {
     private String nome;
     private String cognome;
 
-    @OneToMany(mappedBy = "studente", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "studente")
     private List<Esame> esami = new ArrayList<>();
 
     public Studente() {}

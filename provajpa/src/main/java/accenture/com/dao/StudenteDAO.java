@@ -29,14 +29,6 @@ public class StudenteDAO {
                 .getResultList();
     }
 
-    public List<Esame> findEsamiByStudenteId(Long id) {
-    return em.createQuery(
-            "SELECT e FROM Esame e WHERE e.studente.id = :id",
-            Esame.class
-    )
-    .setParameter("id", id)
-    .getResultList();
-    }
 
     public void update(Studente s) {
         em.getTransaction().begin();

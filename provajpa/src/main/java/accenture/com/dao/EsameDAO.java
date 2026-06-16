@@ -28,15 +28,6 @@ public class EsameDAO {
                 .getResultList();
     }
 
-    public List<Esame> findByStudente(Long studenteId) {
-    return em.createQuery(
-            "SELECT e FROM Esame e WHERE e.studente.id = :id",
-            Esame.class
-    )
-    .setParameter("id", studenteId)
-    .getResultList();
-    }
-
     public void update(Esame e) {
         em.getTransaction().begin();
         em.merge(e);
